@@ -1,10 +1,10 @@
 const express = require('express');
 const dotenv = require('dotenv');
+dotenv.config({path: './config/config.env'});
+
 const mongo_db = require('./dataSourse/db.connector');
 const bootCampRouter = require('./router/bootcamp.router');
 const errorMiddleware = require('./middleware/error.middleware');
-
-dotenv.config({path: './config/config.env'});
 
 mongo_db();
 const app = express();
