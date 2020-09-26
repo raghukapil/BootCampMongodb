@@ -4,6 +4,7 @@
   "description": "Book camp examplet with mongo DB",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Raghunath",
@@ -13,6 +14,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.10.6",
     "node-geocoder": "^3.27.0",
+    "nodemon": "^2.0.4",
     "slugify": "^1.4.5"
   }
 }

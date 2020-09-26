@@ -3,8 +3,8 @@ const ErrorHandler = require('../utils/ErrorResponse');
 const asyncHandler = require('../middleware/async.handler');
 
 exports.getBootCamps = asyncHandler(async (req, res, next) => {
-    const bootcamps = await Bootcamp.find();
-    res.status(200).json({ success: true, data: bootcamps });
+    const bootcamps = await Bootcamp.find(req.query);
+    res.status(200).json({ success: true, count: bootcamps.length, data: bootcamps });
 });
 
 exports.createBootCamp = asyncHandler(async (req, res, next) => {

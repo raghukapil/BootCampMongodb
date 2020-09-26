@@ -54,10 +54,16 @@ const BootcampSchema = new mongoose.Schema({
         enum: [
             'Web Developer',
             'Mobile Developer',
+            'JavaScript',
+            'MongoDB',
             'UI/UX',
             'Data Science',
             'IOS',
+            'AI',
             'Android',
+            'Full Stack',
+            'Angularjs',
+            'Machine Learning',
             'Other'
         ]
     },
@@ -70,6 +76,14 @@ const BootcampSchema = new mongoose.Schema({
     photo: {
         type: String,
         default: 'no-photo.jpg'
+    },
+    scholarship: {
+        type: String,
+        default: 'No'
+    },
+    placement: {
+        type: Boolean,
+        default: false
     },
     createAt: {
         type: Date,
@@ -84,7 +98,6 @@ BootcampSchema.pre('save', function (next) {
 
 BootcampSchema.pre('save', async function (next) {
     const loc = await geocoder.geocode(this.address);
-    console.log(loc);
     this.location = {
         type: 'Point',
         coordinates: [loc[0].logitude, loc[0].latitude],
