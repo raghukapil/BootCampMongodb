@@ -11,7 +11,7 @@ const app = express();
 const port = process.env.PORT || 3500;
 
 app.use(express.json());
-app.use('/api/v1/bootcamp', bootCampRouter);
+app.use('/api/v1/bootcamps', bootCampRouter);
 app.use(errorMiddleware);
 
 app.listen(port, () =>{
