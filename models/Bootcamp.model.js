@@ -62,7 +62,7 @@ const BootcampSchema = new mongoose.Schema({
             'AI',
             'Android',
             'Full Stack',
-            'Angularjs',
+            'Angular',
             'Machine Learning',
             'Other'
         ]
@@ -89,6 +89,13 @@ const BootcampSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
+}, {
+    toObject: {
+        virtuals: true
+    },
+    toJSON: {
+        virtuals: true
+    }
 });
 
 BootcampSchema.pre('save', function (next) {
@@ -111,4 +118,17 @@ BootcampSchema.pre('save', async function (next) {
     next();
 });
 
+//Delete courses with are mapped with bootcamp when bootcamp is deleted
+BootcampSchema.pre('remove', async function (next) {
+    await this.model('Course').deleteMany({ bootcamp: this._id });
+    next();
+});
+
+//reverse popular using virtuals
+BootcampSchema.virtual('courses', {
+    ref: 'Course',
+    localField: '_id',
+    foreignField: 'bootcamp',
+    justOne: false
+});
 module.exports = mongoose.model('Bootcamp', BootcampSchema);

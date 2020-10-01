@@ -1,0 +1,74 @@
+[
+    {
+        "title": "UI Developer",
+        "discription": " UI Developer training will help you develop the skills and knowledge required for a career as a certified UI developer. It focuses on the fundamental concepts of HTML, JavaScript, CSS, JQuery, Bootstrap 3, and Angularjs for designing and developing web pages through real-time use cases.",
+        "weeks": 10,
+        "tuition": 6000,
+        "minimumSkill": "beginner",
+        "scholarshipAvailable": false,
+        "bootcamp": "5f6f5c4657550e24f4affc4b"
+    },
+    {
+        "title": "MEAN Stack Developer",
+        "discription": "MEAN is an acronym which stands for MongoDB, ExpressJS, Angular and Node.js. The MEAN Stack enables you to use JavaScript on both, front- and back-end.",
+        "weeks": 12,
+        "tuition": 9000,
+        "minimumSkill": "intermediate",
+        "scholarshipAvailable": true,
+        "bootcamp": "5f6f5c4657550e24f4affc4a"
+    },
+    {
+        "title": "Angular Developer",
+        "discription": "We will discuss various Angular Features. Further we can develop Project in Angular with Angular features learned in Angular Course. Angular Features includes Angular Components , Angular Directives , Angular Pipies , Angular Forms , Angular Validations , Angular Modules , Angular Routes , Acync Calls , Angular Unit Testing ,Using Bootstrap with Angular , Using Angular Materials.",
+        "weeks": 9,
+        "tuition": 8000,
+        "minimumSkill": "intermediate",
+        "scholarshipAvailable": false,
+        "bootcamp": "5f6f5c4657550e24f4affc49"
+    },
+    {
+        "title": "UI/UX",
+        "discription": "User interface and user experience design is a high-demand field, but the skills and knowledge you will learn in this Specialization are applicable to a wide variety of careers, from marketing to web design to human-computer interaction.",
+        "weeks": 6,
+        "tuition": 5000,
+        "minimumSkill": "beginner",
+        "scholarshipAvailable": false,
+        "bootcamp": "5f6f5c4657550e24f4affc4a"
+    },
+    {
+        "title": "IOS",
+        "discription": "iOS is one of the first mobile operating systems to launch the concept of App Store & introduce third party app development & distribution to the platform. Because of the secure operating system, iOS offers one of the best app collections, both in terms of quantity & quality.",
+        "weeks": 12,
+        "tuition": 12000,
+        "minimumSkill": "beginner",
+        "scholarshipAvailable": false,
+        "bootcamp": "5f6f5c4657550e24f4affc48"
+    },
+    {
+        "title": "Android",
+        "discription": "This course trains you to develop stunning apps for one of the most in-demand mobile platforms – Android. Learn to test & publish applications for mobile & other wireless devices. Also, train in advanced programming skills & techniques to optimise your apps for the Android store.",
+        "weeks": 12,
+        "tuition": 11000,
+        "minimumSkill": "beginner",
+        "scholarshipAvailable": false,
+        "bootcamp": "5f6f5c4657550e24f4affc48"
+    },
+    {
+        "title": "MongoDB",
+        "discription": "MongoDB is a distributed Database at its core, so high availability, horizontal scaling, and geographic distribution are built in and easy to use. This training will help you master the leading document-oriented NoSQL database, MongoDB Architecture, CRUD, Schema Design, Data Modelling and Indexing using real-life case studies.",
+        "weeks": 8,
+        "tuition": 9000,
+        "minimumSkill": "beginner",
+        "scholarshipAvailable": false,
+        "bootcamp": "5f6f5c4657550e24f4affc49"
+    },
+    {
+        "title": "AI & Machine Learning",
+        "discription": "AI works as a computer program that does the smart work whereas ML is based on the simple concept of machines taking data and learning from them.",
+        "weeks": 18,
+        "tuition": 25000,
+        "minimumSkill": "advance",
+        "scholarshipAvailable": true,
+        "bootcamp": "5f6f5c4657550e24f4affc4c"
+    }
+]

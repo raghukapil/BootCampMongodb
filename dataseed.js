@@ -3,9 +3,11 @@ const dotenv = require('dotenv');
 const fs = require("fs");
 dotenv.config({path: './config/config.env'});
 const Bootcamp = require('./models/Bootcamp.model');
+const Course = require('./models/Course.model');
 
 
-const data = JSON.parse(fs.readFileSync(`${__dirname}/_data/bootcamp.json`, 'utf-8'));
+const bootcampData = JSON.parse(fs.readFileSync(`${__dirname}/_data/bootcamp.json`, 'utf-8'));
+const courseData = JSON.parse(fs.readFileSync(`${__dirname}/_data/course.json`, 'utf-8'));
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -16,7 +18,8 @@ mongoose.connect(process.env.MONGO_URI, {
 
 const importData = async () => {
     try {
-        await Bootcamp.create(data);
+        await Bootcamp.create(bootcampData);
+        await Course.create(courseData);
         console.log("successfully data Import");
         process.exit();
     } catch (error) {
@@ -27,6 +30,7 @@ const importData = async () => {
 const deleteData = async () => {
     try {
         await Bootcamp.deleteMany();
+        await Course.deleteMany();
         console.log("successfully data Deleted");
         process.exit();
     } catch (error) {
@@ -34,8 +38,8 @@ const deleteData = async () => {
     }
 }
 
-if(process.argv[2] === "bootcampimport") {
+if(process.argv[2] === "-i") {
     importData();
-} else if(process.argv[2] === "bootcampdelete"){
+} else if(process.argv[2] === "-d"){
     deleteData();
 }
