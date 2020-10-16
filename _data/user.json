@@ -1,0 +1,68 @@
+[
+    {
+        "role": "publisher",
+        "email": "publisher1@gmail.com",
+        "password": "123456",
+        "name": "publisher1"
+    },
+    {
+        "role": "publisher",
+        "email": "publisher2@gmail.com",
+        "password": "123456",
+        "name": "publisher2"
+    },
+    {
+        "role": "publisher",
+        "email": "publisher3@gmail.com",
+        "password": "123456",
+        "name": "publisher3"
+    },
+    {
+        "role": "publisher",
+        "email": "publisher4@gmail.com",
+        "password": "123456",
+        "name": "publisher4"
+    },
+    {
+        "role": "publisher",
+        "email": "publisher5@gmail.com",
+        "password": "123456",
+        "name": "publisher5"
+    },
+    {
+        "role": "publisher",
+        "email": "publisher6@gmail.com",
+        "password": "123456",
+        "name": "publisher6"
+    },
+    {
+        "role": "user",
+        "email": "user7@gmail.com",
+        "password": "123456",
+        "name": "user7"
+    },
+    {
+        "role": "user",
+        "email": "user8@gmail.com",
+        "password": "123456",
+        "name": "user8"
+    },
+    {
+        "role": "user",
+        "email": "user9@gmail.com",
+        "password": "123456",
+        "name": "user9"
+    },
+    {
+        "role": "user",
+        "email": "user10@gmail.com",
+        "password": "123456",
+        "name": "user10"
+    },
+    {
+        "role": "user",
+        "email": "admin@gmail.com",
+        "password": "123456",
+        "name": "admin"
+    }
+]
