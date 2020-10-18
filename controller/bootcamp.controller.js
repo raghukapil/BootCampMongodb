@@ -52,13 +52,20 @@ exports.getBootCamp = asyncHandler(async (req, res, next) => {
  * @route : PUT /api/v1/bootcamps
  */
 exports.updateBootCamp = asyncHandler(async (req, res, next) => {
-    const bootcamp = await Bootcamp.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true
-    });
+    let bootcamp = await Bootcamp.findByIdAndUpdate(req.params.id);
+    //check if bootcamp exist before doing update.
     if (!bootcamp) {
         return next(new ErrorHandler(`Bootcamp not found with ID: ${req.params.id}`, 404));
     }
+    //Bootcamp user or admin can only update this bootcamp.
+    if(bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin'){
+        return next(new ErrorHandler(`Bootcamp can not be updated with user ${req.user.id}`, 401));
+    }
+
+    bootcamp = await Bootcamp.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true
+    });
     res.status(200).json({ success: true, data: bootcamp });
 });
 
