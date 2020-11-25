@@ -6,8 +6,8 @@ const ErrorHandler = require('../utils/ErrorResponse');
 exports.verityToken = asyncHandler( async (req, res, next) => {
     let token;
 
-    if(req.headers && req.headers.authentication) {
-        token = req.headers.authentication.split(' ')[1];        
+    if(req.headers && req.headers.authorization) {
+        token = req.headers.authorization.split(' ')[1];        
     } else {
         return next(new ErrorHandler('You are not authenticated for this route', 401));
     }
