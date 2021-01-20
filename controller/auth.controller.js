@@ -91,6 +91,38 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
 
 });
 
+/**
+ * Update user details
+ */
+exports.updateUserDetails = asyncHandler(async (req, res, next) => {
+    const userDetails = {
+        "name": req.body.name,
+        "email": req.body.email
+    }
+    const user = await userSchema.findByIdAndUpdate(req.user.id, userDetails, {
+        new: true,
+        runValidators: true
+    });
+    res.status(200).json({ success: true, data: user });
+});
+
+/**
+ * Update password details
+ */
+exports.updatePassword = asyncHandler(async (req, res, next) => {
+    const currentPassword = req.body.currentPassword;
+
+    const user = await userSchema.findOne({ email: req.user.email }).select('+password');
+
+    if(!(await user.matchPassword(currentPassword))) {
+        return next(new ErrorHandler("Password incorrect", 401));
+    }
+    user.password = req.body.newPassword;
+
+    await user.save();
+    sendResponseWithCookies(user, 200, res);
+});
+
 function sendResponseWithCookies(user, statusCode, res) {
     const token = user.getjwtToken();
     const options = {

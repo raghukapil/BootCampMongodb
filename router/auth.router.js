@@ -1,5 +1,5 @@
 const express = require('express');
-const { register, login, currentlogin, forgotPassword, resetPassword } = require('../controller/auth.controller');
+const { register, login, currentlogin, forgotPassword, resetPassword, updateUserDetails, updatePassword } = require('../controller/auth.controller');
 const { verityToken } = require('../middleware/verifyToken.middleware');
 
 const router = express.Router();
@@ -23,5 +23,13 @@ router
 router
     .route('/currentlogin')
     .post(verityToken, currentlogin);
+
+router
+    .route('/updatedetails')
+    .put(verityToken, updateUserDetails);
+
+router
+    .route('/updatePassword')
+    .put(verityToken, updatePassword);
 
 module.exports = router;
