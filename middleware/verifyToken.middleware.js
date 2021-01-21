@@ -8,7 +8,11 @@ exports.verityToken = asyncHandler( async (req, res, next) => {
 
     if(req.headers && req.headers.authorization) {
         token = req.headers.authorization.split(' ')[1];        
-    } else {
+    } else if (req.cookies.token) {
+        token = req.cookies.token;
+    }
+    
+    if(!token) {
         return next(new ErrorHandler('You are not authenticated for this route', 401));
     }
 

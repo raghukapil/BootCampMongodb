@@ -1,11 +1,13 @@
 const express = require('express');
 const { getBootCamps, getBootCamp, createBootCamp, updateBootCamp, deleteBootCamp, getBootcampsByRadius, uploadPhoto } = require('../controller/bootcamp.controller');
 const courseRoute = require('./course.router');
+const reviewRouter = require('./review.router');
 const { verityToken, authorize } = require('../middleware/verifyToken.middleware');
 
 const router = express.Router();
 
 router.use('/:bootcampId/courses', courseRoute);
+router.use('/:bootcampId/reviews', reviewRouter);
 
 router
     .route('/')

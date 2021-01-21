@@ -5,7 +5,7 @@ const errorHandler = (err, req, res, next) => {
     error.message = err.message;
 
     if(err.name === 'CastError') {
-        const message = `Bootcamp not found with ID: ${err.value}`;
+        const message = `Resourse not found with ID: ${err.value}`;
         error = new ErrorHandler(message, 404);
     }
 

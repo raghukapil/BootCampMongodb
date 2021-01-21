@@ -1,5 +1,5 @@
 const express = require('express');
-const { register, login, currentlogin, forgotPassword, resetPassword, updateUserDetails, updatePassword } = require('../controller/auth.controller');
+const { register, login, currentlogin, forgotPassword, resetPassword, updateUserDetails, updatePassword, logout } = require('../controller/auth.controller');
 const { verityToken } = require('../middleware/verifyToken.middleware');
 
 const router = express.Router();
@@ -11,6 +11,10 @@ router
 router
     .route('/login')
     .post(login);
+
+router
+    .route('/logout')
+    .post(logout);
 
 router
     .route('/forgotpassword')

@@ -9,6 +9,8 @@ const mongo_db = require('./dataSourse/db.connector');
 const bootCampRouter = require('./router/bootcamp.router');
 const courseRouter = require('./router/course.router');
 const authRouter = require('./router/auth.router');
+const userRouter = require('./router/user.router');
+const reviewRouter = require('./router/review.router');
 const errorMiddleware = require('./middleware/error.middleware');
 
 mongo_db();
@@ -23,6 +25,8 @@ app.use(cookieParser());
 app.use('/api/v1/bootcamps', bootCampRouter);
 app.use('/api/v1/courses', courseRouter);
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/user', userRouter);
+app.use('/api/v1/reviews', reviewRouter);
 app.use(errorMiddleware);
 
 app.listen(port, () =>{

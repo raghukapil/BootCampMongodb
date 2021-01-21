@@ -1,6 +1,6 @@
 const Course = require('../models/Course.model');
 const Bootcamp = require('../models/Bootcamp.model');
-const ErrorHandler = require('../middleware/error.middleware');
+const ErrorHandler = require('../utils/ErrorResponse');
 const asyncHandler = require('../middleware/async.handler');
 
 /**
@@ -58,7 +58,7 @@ exports.createCourse = asyncHandler(async (req, res, next) => {
     }
 
     req.body.bootcamp = req.params.bootcampId;
-    req.user = req.user.id;
+    req.body.user = req.user.id;
     const course = await Course.create(req.body);
 
     res.status(200).json({ success: true, data: course });
