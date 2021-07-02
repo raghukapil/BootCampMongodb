@@ -10,8 +10,8 @@ const asyncHandler = require('../middleware/async.handler');
  */
 exports.getCourses = asyncHandler(async (req, res, next) => {
     let query;
-    if(req.params.bootcampId) {
-        query = Course.find({ bootcamp: req.params.bootcampId});
+    if (req.params.bootcampId) {
+        query = Course.find({ bootcamp: req.params.bootcampId });
     } else {
         query = Course.find();
     }
@@ -19,10 +19,10 @@ exports.getCourses = asyncHandler(async (req, res, next) => {
         path: 'bootcamp',
         select: 'name description'
     });
-    res.status(200).json({ 
-        success: true, 
-        count: courses.length, 
-        data: courses 
+    res.status(200).json({
+        success: true,
+        count: courses.length,
+        data: courses
     });
 });
 
@@ -48,12 +48,12 @@ exports.getCourseByID = asyncHandler(async (req, res, next) => {
  */
 exports.createCourse = asyncHandler(async (req, res, next) => {
     const bootcamp = await Bootcamp.findById(req.params.bootcampId);
-    if(!bootcamp) {
-        return next(new ErrorHandler(`Bootcamp not found with ID: ${req.params.bootcampId}`, 404)); 
-    } 
+    if (!bootcamp) {
+        return next(new ErrorHandler(`Bootcamp not found with ID: ${req.params.bootcampId}`, 404));
+    }
 
     //Bootcamp user or admin can only update this bootcamp.
-    if(bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin'){
+    if (bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin') {
         return next(new ErrorHandler(`Course can not be added with user ${req.user.id}`, 401));
     }
 
@@ -66,35 +66,47 @@ exports.createCourse = asyncHandler(async (req, res, next) => {
 
 /**
  * @desc  : Update a Course with respective to courseID
- * @route : PUT /api/v1/course
+ * @route : PUT /api/v1/bootcamps/:bootcampId/course/:courseID
  */
 exports.updateCourse = asyncHandler(async (req, res, next) => {
-    const course = await Course.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true
-    });
-    if (!course) {
-        return next(new ErrorHandler(`Course not found with ID: ${req.params.id}`, 404));
-    }
-    //Bootcamp user or admin can only update this Course.
-    if(bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin'){
-        return next(new ErrorHandler(`Course can not be updated with user ${req.user.id}`, 401));
+    const bootcamp = await Bootcamp.findById(req.params.bootcampId);
+    if (!bootcamp) {
+        return next(new ErrorHandler(`Bootcamp not found with ID: ${req.params.bootcampId}`, 404));
     }
 
-    res.status(200).json({ succes: true, data: course });
-});
-
-/**
- * @desc  : Update a Course with respective to courseID
- * @route : PUT /api/v1/course
- */
-exports.deleteCourse = asyncHandler(async (req, res, next) => {
     const course = await Course.findById(req.params.id);
     if (!course) {
         return next(new ErrorHandler(`Course not found with ID: ${req.params.id}`, 404));
     }
     //Bootcamp user or admin can only update this Course.
-    if(bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin'){
+    if (bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin') {
+        return next(new ErrorHandler(`Course can not be updated with user ${req.user.id}`, 401));
+    }
+
+    const courseUpdated = await Course.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true
+    });
+
+    res.status(200).json({ succes: true, data: courseUpdated });
+});
+
+/**
+ * @desc  : Delete a Course with respective to courseID
+ * @route : PUT /api/v1/bootcamps/:bootcampId/course/courseID
+ */
+exports.deleteCourse = asyncHandler(async (req, res, next) => {
+    const bootcamp = await Bootcamp.findById(req.params.bootcampId);
+    if (!bootcamp) {
+        return next(new ErrorHandler(`Bootcamp not found with ID: ${req.params.bootcampId}`, 404));
+    }
+
+    const course = await Course.findById(req.params.id);
+    if (!course) {
+        return next(new ErrorHandler(`Course not found with ID: ${req.params.id}`, 404));
+    }
+    //Bootcamp user or admin can only Delete this Course.
+    if (bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin') {
         return next(new ErrorHandler(`Course can not be updated with user ${req.user.id}`, 401));
     }
 

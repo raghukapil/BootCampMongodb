@@ -2,6 +2,11 @@ const express = require('express');
 const dotenv = require('dotenv');
 const fileUpload = require('express-fileupload');
 const cookieParser =require('cookie-parser');
+const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet');
+const xss = require('xss-clean');
+const hpp = require('hpp');
+const cors = require('cors');
 // const path = require('path');
 dotenv.config({path: './config/config.env'});
 
@@ -19,7 +24,12 @@ const port = process.env.PORT || 3500;
 
 app.use(express.json());
 app.use(fileUpload());
+app.use(mongoSanitize());
 app.use(cookieParser());
+app.use(helmet());
+app.use(xss());
+app.use(hpp());
+app.use(cors());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1/bootcamps', bootCampRouter);

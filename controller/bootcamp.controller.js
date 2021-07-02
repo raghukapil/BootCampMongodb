@@ -23,7 +23,7 @@ exports.getBootCamps = asyncHandler(async (req, res, next) => {
  * @route : POST /api/v1/bootcamps
  */
 exports.createBootCamp = asyncHandler(async (req, res, next) => {
-    req.user = req.user.id;
+    req.body.user = req.user.id;
     //check if user published bootcamp already
     const publishedBootCamp = await Bootcamp.findOne({ user: req.user.id });
 
